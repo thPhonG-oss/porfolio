@@ -1,52 +1,135 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap")
-layer(base);
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap") layer(base);
 
 @import "tailwindcss";
 
 @theme {
-  --font-montserrat: Montserrat, sans-serif;
+  --font-inter: Inter, sans-serif;
 
-  --shadow-custom: 0 0 15px rgba(0, 0, 0, 0.3);
-  --shadow-right: 10px 0px 10px -5px rgba(0, 0, 0, 0.3);
-
-  --color-custom-blue: rgba(28, 100, 242, 1);
-
-  --color-banner-color1: #fdc200;
-  --color-banner-color2: #ff2c2c;
-  --color-banner-color3: #21ad61;
-  --color-banner-color4: #723da6;
-
-  --background-image-custom-gradient: linear-gradient(
-    to right,
-    #111827,
-    #1f2937
-  );
-  --background-image-button-gradient: linear-gradient(
-    to right,
-    #7e22ce,
-    #ef4444
-  );
-  --background-image-custom-gradient2: linear-gradient(
-    135deg,
-    #f5f5f5,
-    #eae7dc
-  );
+  /* New Minimalist Color Palette */
+  --color-primary: #2563eb; /* Blue 600 */
+  --color-primary-dark: #1e40af; /* Blue 700 */
+  --color-primary-light: #3b82f6; /* Blue 500 */
+  --color-accent: #0ea5e9; /* Sky 500 */
+  --color-accent-light: #38bdf8; /* Sky 400 */
+  
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f8fafc; /* Slate 50 */
+  --color-bg-tertiary: #f1f5f9; /* Slate 100 */
+  
+  --color-text-primary: #0f172a; /* Slate 900 */
+  --color-text-secondary: #475569; /* Slate 600 */
+  --color-text-tertiary: #94a3b8; /* Slate 400 */
+  
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+  
+  --gradient-primary: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+  --gradient-light: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
 }
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
 @layer base {
   *,
   ::after,
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
+    border-color: #e2e8f0;
   }
+  
+  body {
+    font-family: var(--font-inter);
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+  }
+}
+
+/* Custom Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.6s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.6s ease-out;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
 }
