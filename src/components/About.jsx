@@ -1,6 +1,6 @@
 const About = ({ isDark }) => {
   const highlights = [
-    { icon: '🎓', title: 'Education', value: 'Computer Science', color: 'blue' },
+    { icon: '🎓', title: 'Education', value: 'Information System', color: 'blue' },
     { icon: '💻', title: 'Projects', value: '5+ Completed', color: 'sky' },
     { icon: '🚀', title: 'Learning', value: 'Fast & Eager', color: 'indigo' },
     { icon: '🤝', title: 'Team Work', value: 'Collaborative', color: 'cyan' },
@@ -102,9 +102,9 @@ const About = ({ isDark }) => {
 
             <div className="pt-6 flex flex-wrap gap-4">
               <a
-                href="/CV_NguyenThanhPhong_WebAppDev_Intern.pdf"
-                download
-                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-sky-500 text-white rounded-xl font-medium hover:shadow-xl hover:scale-105 transition-all duration-300"
+               href="/CV_NguyenThanhPhong_WebAppDev_Intern.pdf"
+               download="CV_NguyenThanhPhong_WebAppDev_Intern.pdf"
+               className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-sky-500 text-white rounded-xl font-medium hover:shadow-xl hover:scale-105 transition-all duration-300"
               >
                 <span>Download CV</span>
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
