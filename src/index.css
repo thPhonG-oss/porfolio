@@ -28,6 +28,15 @@
   --gradient-primary: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
   --gradient-light: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
 }
+@theme {
+  /* Dark mode colors */
+  --color-dark-bg: #0f172a;
+  --color-dark-surface: #1e293b;
+  --color-dark-border: #334155;
+  
+  /* Custom gradient cho dark mode */
+  --gradient-dark-primary: linear-gradient(135deg, #1e40af 0%, #0ea5e9 100%);
+}
 
 @layer base {
   *,

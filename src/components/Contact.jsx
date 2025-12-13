@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FaEnvelope, FaMapMarkerAlt, FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 
-const Contact = () => {
+const Contact = ({ isDark }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -49,7 +49,7 @@ const Contact = () => {
   ];
 
   const socials = [
-    { icon: FaGithub, link: 'https://github.com/thPhonG-oss', label: 'GitHub', color: 'hover:bg-slate-700' },
+    { icon: FaGithub, link: 'https://github.com/thPhonG-oss', label: 'GitHub', color: isDark ? 'hover:bg-slate-600' : 'hover:bg-slate-700' },
     { icon: FaLinkedin, link: 'https://linkedin.com/in/phong-nguyenthanh', label: 'LinkedIn', color: 'hover:bg-blue-600' },
     { icon: FaInstagram, link: 'https://www.instagram.com/p_eazyyy/', label: 'Instagram', color: 'hover:bg-pink-600' },
   ];
@@ -57,29 +57,45 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="min-h-screen py-24 bg-white"
+      className={`min-h-screen py-24 transition-colors duration-300 ${
+        isDark ? 'bg-slate-900' : 'bg-white'
+      }`}
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16 animate-fade-in-up">
-          <span className="text-blue-600 font-semibold text-sm tracking-wider uppercase">
+          <span className={`font-semibold text-sm tracking-wider uppercase ${
+            isDark ? 'text-blue-400' : 'text-blue-600'
+          }`}>
             Get In Touch
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 mt-2">
+          <h2 className={`text-4xl md:text-5xl font-bold mb-4 mt-2 ${
+            isDark ? 'text-white' : 'text-slate-900'
+          }`}>
             Let's Work Together
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-sky-500 mx-auto rounded-full"></div>
-          <p className="text-slate-600 mt-6 text-lg max-w-2xl mx-auto">
+          <p className={`mt-6 text-lg max-w-2xl mx-auto ${
+            isDark ? 'text-slate-300' : 'text-slate-600'
+          }`}>
             Feel free to reach out for collaborations or just a friendly chat
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
           <div className="space-y-8 animate-slide-in-left">
-            <div className="bg-gradient-to-br from-blue-50 to-sky-50 p-8 rounded-3xl border border-blue-100">
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">
+            <div className={`p-8 rounded-3xl border ${
+              isDark 
+                ? 'bg-gradient-to-br from-slate-800 to-slate-900 border-slate-700' 
+                : 'bg-gradient-to-br from-blue-50 to-sky-50 border-blue-100'
+            }`}>
+              <h3 className={`text-2xl font-bold mb-4 ${
+                isDark ? 'text-white' : 'text-slate-900'
+              }`}>
                 Let's talk about everything! 💬
               </h3>
-              <p className="text-slate-600 leading-relaxed">
+              <p className={`leading-relaxed ${
+                isDark ? 'text-slate-300' : 'text-slate-600'
+              }`}>
                 Don't hesitate to contact me if you have any questions or just
                 want to say hello. I'm always open to discussing new projects,
                 creative ideas, or opportunities.
@@ -92,22 +108,34 @@ const Contact = () => {
                 return (
                   <div
                     key={idx}
-                    className="flex items-center space-x-4 bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-slate-100 group"
+                    className={`flex items-center space-x-4 p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border group ${
+                      isDark 
+                        ? 'bg-slate-800/80 border-slate-700 hover:bg-slate-800' 
+                        : 'bg-white border-slate-100'
+                    }`}
                   >
                     <div className={`p-4 bg-gradient-to-br ${info.gradient} rounded-xl shadow-lg group-hover:scale-110 transition-transform`}>
                       <Icon className="text-2xl text-white" />
                     </div>
                     <div>
-                      <p className="text-sm text-slate-500 font-medium">{info.title}</p>
+                      <p className={`text-sm font-medium ${
+                        isDark ? 'text-slate-400' : 'text-slate-500'
+                      }`}>{info.title}</p>
                       {info.link ? (
                         <a
                           href={info.link}
-                          className="text-slate-900 font-medium hover:text-blue-600 transition-colors"
+                          className={`font-medium transition-colors ${
+                            isDark 
+                              ? 'text-white hover:text-blue-400' 
+                              : 'text-slate-900 hover:text-blue-600'
+                          }`}
                         >
                           {info.value}
                         </a>
                       ) : (
-                        <p className="text-slate-900 font-medium">{info.value}</p>
+                        <p className={`font-medium ${
+                          isDark ? 'text-white' : 'text-slate-900'
+                        }`}>{info.value}</p>
                       )}
                     </div>
                   </div>
@@ -115,8 +143,7 @@ const Contact = () => {
               })}
             </div>
 
-            <div>
-              {/* <p className="text-sm text-slate-500 font-medium mb-4">Follow Me</p> */}
+            {/* <div>
               <div className="flex space-x-4">
                 {socials.map((social, idx) => {
                   const Icon = social.icon;
@@ -126,7 +153,9 @@ const Contact = () => {
                       href={social.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`w-14 h-14 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600 hover:text-white ${social.color} transition-all duration-300 hover:scale-110 shadow-md`}
+                      className={`w-14 h-14 rounded-xl flex items-center justify-center text-white ${social.color} transition-all duration-300 hover:scale-110 shadow-md ${
+                        isDark ? 'bg-slate-700' : 'bg-slate-100 text-slate-600'
+                      }`}
                       title={social.label}
                     >
                       <Icon size={22} />
@@ -134,14 +163,20 @@ const Contact = () => {
                   );
                 })}
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="animate-slide-in-right">
-            <div className="bg-gradient-to-br from-slate-50 to-blue-50 p-8 rounded-3xl shadow-xl border border-slate-100">
+            <div className={`p-8 rounded-3xl shadow-xl border ${
+              isDark 
+                ? 'bg-gradient-to-br from-slate-800 to-slate-900 border-slate-700' 
+                : 'bg-gradient-to-br from-slate-50 to-blue-50 border-slate-100'
+            }`}>
               <div className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-slate-700 mb-2 font-medium">
+                  <label htmlFor="name" className={`block mb-2 font-medium ${
+                    isDark ? 'text-slate-200' : 'text-slate-700'
+                  }`}>
                     Your Name
                   </label>
                   <input
@@ -150,13 +185,19 @@ const Contact = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-4 bg-white border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                    className={`w-full px-4 py-4 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all ${
+                      isDark 
+                        ? 'bg-slate-900 border-slate-700 text-white placeholder-slate-500' 
+                        : 'bg-white border-slate-200 text-slate-900'
+                    }`}
                     placeholder="John Doe"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-slate-700 mb-2 font-medium">
+                  <label htmlFor="email" className={`block mb-2 font-medium ${
+                    isDark ? 'text-slate-200' : 'text-slate-700'
+                  }`}>
                     Your Email
                   </label>
                   <input
@@ -165,13 +206,19 @@ const Contact = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-4 bg-white border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                    className={`w-full px-4 py-4 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all ${
+                      isDark 
+                        ? 'bg-slate-900 border-slate-700 text-white placeholder-slate-500' 
+                        : 'bg-white border-slate-200 text-slate-900'
+                    }`}
                     placeholder="john@example.com"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-slate-700 mb-2 font-medium">
+                  <label htmlFor="message" className={`block mb-2 font-medium ${
+                    isDark ? 'text-slate-200' : 'text-slate-700'
+                  }`}>
                     Your Message
                   </label>
                   <textarea
@@ -180,7 +227,11 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     rows="5"
-                    className="w-full px-4 py-4 bg-white border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all resize-none"
+                    className={`w-full px-4 py-4 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all resize-none ${
+                      isDark 
+                        ? 'bg-slate-900 border-slate-700 text-white placeholder-slate-500' 
+                        : 'bg-white border-slate-200 text-slate-900'
+                    }`}
                     placeholder="Your message here..."
                   ></textarea>
                 </div>
@@ -206,9 +257,11 @@ const Contact = () => {
           </div>
         </div>
 
-        <div className="text-center mt-20 pt-10 border-t border-slate-200">
-          <p className="text-slate-500">
-            © 2025 Phong Nguyen Thanh. Built with using React & Tailwind CSS
+        <div className={`text-center mt-20 pt-10 border-t ${
+          isDark ? 'border-slate-800' : 'border-slate-200'
+        }`}>
+          <p className={isDark ? 'text-slate-400' : 'text-slate-500'}>
+            © 2025 Phong Nguyen Thanh. Built with React & Tailwind CSS
           </p>
         </div>
       </div>
