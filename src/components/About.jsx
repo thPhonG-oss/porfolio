@@ -68,7 +68,7 @@ const About = () => {
             {/* Download CV Button */}
             <div className="pt-6">
               <a
-                href="/your-cv.pdf"
+                href="/CV_NguyenThanhPhong_WebAppDev_Intern.pdf"
                 download
                 className="inline-block px-8 py-3 bg-gradient-to-r from-purple-700 to-red-500 text-white rounded-lg font-medium hover:scale-105 transition-transform duration-200 shadow-lg"
               >
