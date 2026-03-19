@@ -4,24 +4,26 @@ const Projects = ({ isDark }) => {
   const projects = [
     {
       id: 1,
-      image: "/project1.jpg", // Thay bằng đường dẫn hình ảnh thực tế của bạn
+      image: null,
       title: "E-Commerce API",
       description:
         "RESTful API for e-commerce platform with microservices architecture, payment integration, and real-time inventory management.",
       tech: ["Spring Boot", "PostgreSQL", "Redis", "Docker"],
-      github: "https://github.com/yourusername/project1",
-      demo: "https://demo.example.com",
+      github: "https://github.com/thPhonG-oss",
+      demo: null,
+      emoji: "🛒",
       gradient: "from-blue-500 to-cyan-500",
     },
     {
       id: 2,
-      image: "/project2.jpg", // Thay bằng đường dẫn hình ảnh thực tế
+      image: null,
       title: "Task Management",
       description:
         "Collaborative task management API with real-time notifications, user authentication, and role-based access control.",
       tech: ["Java", "Spring Security", "MongoDB", "WebSocket"],
-      github: "https://github.com/yourusername/project2",
-      demo: "https://demo.example.com",
+      github: "https://github.com/thPhonG-oss",
+      demo: null,
+      emoji: "✅",
       gradient: "from-emerald-500 to-teal-500",
     },
   ];
@@ -66,23 +68,19 @@ const Projects = ({ isDark }) => {
               style={{ animationDelay: `${idx * 0.1}s` }}
             >
               <div className="h-48 overflow-hidden relative">
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-90`}
-                ></div>
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  onError={(e) => {
-                    // Fallback nếu không có hình ảnh
-                    e.target.style.display = "none";
-                    e.target.parentElement.innerHTML = `
-                      <div class="w-full h-full flex items-center justify-center bg-gradient-to-br ${project.gradient}">
-                        <span class="text-6xl">🚀</span>
-                      </div>
-                    `;
-                  }}
-                />
+                {project.image ? (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                ) : (
+                  <div
+                    className={`w-full h-full flex items-center justify-center bg-gradient-to-br ${project.gradient}`}
+                  >
+                    <span className="text-6xl">{project.emoji}</span>
+                  </div>
+                )}
               </div>
 
               <div className="p-6">

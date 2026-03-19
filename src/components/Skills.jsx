@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  FaJava,
-  FaDatabase,
-  FaNoSQL,
-  FaDocker,
-  FaGitAlt,
-} from "react-icons/fa";
+import { FaJava, FaDatabase, FaDocker, FaGitAlt } from "react-icons/fa";
 import {
   SiSpring,
   SiMongodb,
@@ -15,6 +9,7 @@ import {
   SiSpringsecurity,
   SiHibernate,
   SiReact,
+  SiJavascript,
 } from "react-icons/si";
 
 const Skills = ({ isDark }) => {
@@ -26,12 +21,17 @@ const Skills = ({ isDark }) => {
         { name: "SQL", icon: FaDatabase, color: "from-blue-500 to-cyan-500" },
         {
           name: "NoSQL",
-          icon: FaNoSQL,
+          icon: FaDatabase,
           color: "from-green-500 to-emerald-500",
         },
+        // {
+        //   name: "NoSQL",
+        //   icon: FaDatabase,
+        //   color: "from-green-500 to-emerald-500",
+        // },
         {
           name: "Javascript",
-          icon: FaJava,
+          icon: SiJavascript,
           color: "from-yellow-500 to-orange-500",
         },
       ],

@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin, FaEnvelope, FaInstagram } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 const Hero = ({ isDark }) => {
   return (
@@ -88,16 +88,6 @@ const Hero = ({ isDark }) => {
             >
               <FaEnvelope size={22} />
             </a>
-            {/* <a
-              href="https://www.instagram.com/p_eazyyy/"
-              className={`w-12 h-12 flex items-center justify-center rounded-full transition-all duration-300 hover:scale-110 ${
-                isDark 
-                  ? 'bg-slate-800 text-slate-400 hover:bg-blue-600 hover:text-white' 
-                  : 'bg-slate-100 text-slate-600 hover:bg-blue-600 hover:text-white'
-              }`}
-            >
-              <FaInstagram size={22} />
-            </a> */}
           </div>
 
           <div className="flex flex-wrap gap-4 pt-4">
