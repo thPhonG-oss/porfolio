@@ -17,72 +17,35 @@ const Skills = ({ isDark }) => {
     {
       title: "Languages",
       skills: [
-        { name: "Java", icon: FaJava, color: "from-orange-500 to-red-500" },
-        { name: "SQL", icon: FaDatabase, color: "from-blue-500 to-cyan-500" },
-        {
-          name: "NoSQL",
-          icon: FaDatabase,
-          color: "from-green-500 to-emerald-500",
-        },
-        // {
-        //   name: "NoSQL",
-        //   icon: FaDatabase,
-        //   color: "from-green-500 to-emerald-500",
-        // },
-        {
-          name: "Javascript",
-          icon: SiJavascript,
-          color: "from-yellow-500 to-orange-500",
-        },
+        { name: "Java", icon: FaJava },
+        { name: "SQL", icon: FaDatabase },
+        { name: "NoSQL", icon: FaDatabase },
+        { name: "Javascript", icon: SiJavascript },
       ],
     },
     {
       title: "Frameworks",
       skills: [
-        {
-          name: "Spring Boot",
-          icon: SiSpring,
-          color: "from-green-500 to-emerald-500",
-        },
-        {
-          name: "Spring Security",
-          icon: SiSpringsecurity,
-          color: "from-green-600 to-teal-600",
-        },
-        {
-          name: "JPA/Hibernate",
-          icon: SiHibernate,
-          color: "from-green-700 to-emerald-600",
-        },
-        {
-          name: "Reactjs",
-          icon: SiReact,
-          color: "from-blue-500 to-cyan-500",
-        },
+        { name: "Spring Boot", icon: SiSpring },
+        { name: "Spring Security", icon: SiSpringsecurity },
+        { name: "JPA/Hibernate", icon: SiHibernate },
+        { name: "React.js", icon: SiReact },
       ],
     },
     {
       title: "Databases",
       skills: [
-        {
-          name: "MongoDB",
-          icon: SiMongodb,
-          color: "from-green-600 to-teal-600",
-        },
-        { name: "MySQL", icon: SiMysql, color: "from-blue-600 to-cyan-600" },
-        {
-          name: "PostgreSQL",
-          icon: SiPostgresql,
-          color: "from-blue-700 to-indigo-600",
-        },
-        { name: "Redis", icon: SiRedis, color: "from-red-500 to-orange-500" },
+        { name: "MongoDB", icon: SiMongodb },
+        { name: "MySQL", icon: SiMysql },
+        { name: "PostgreSQL", icon: SiPostgresql },
+        { name: "Redis", icon: SiRedis },
       ],
     },
     {
       title: "Tools & DevOps",
       skills: [
-        { name: "Docker", icon: FaDocker, color: "from-blue-600 to-sky-600" },
-        { name: "Git", icon: FaGitAlt, color: "from-orange-600 to-red-600" },
+        { name: "Docker", icon: FaDocker },
+        { name: "Git", icon: FaGitAlt },
       ],
     },
   ];
@@ -97,7 +60,7 @@ const Skills = ({ isDark }) => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16 animate-fade-in-up">
           <span
-            className={`font-semibold text-sm tracking-wider uppercase ${
+            className={`font-semibold text-xs tracking-widest uppercase ${
               isDark ? "text-blue-400" : "text-blue-600"
             }`}
           >
@@ -110,10 +73,14 @@ const Skills = ({ isDark }) => {
           >
             Skills & Technologies
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-sky-500 mx-auto rounded-full"></div>
+          <div
+            className={`w-12 h-px mx-auto ${
+              isDark ? "bg-slate-600" : "bg-slate-300"
+            }`}
+          ></div>
           <p
-            className={`mt-6 text-lg max-w-2xl mx-auto ${
-              isDark ? "text-slate-300" : "text-slate-600"
+            className={`mt-6 text-base max-w-2xl mx-auto ${
+              isDark ? "text-slate-400" : "text-slate-500"
             }`}
           >
             Technologies and tools I work with to build modern applications
@@ -128,38 +95,42 @@ const Skills = ({ isDark }) => {
               style={{ animationDelay: `${catIdx * 0.1}s` }}
             >
               <h3
-                className={`text-2xl font-bold mb-6 ${
-                  isDark ? "text-white" : "text-slate-900"
+                className={`text-sm font-semibold tracking-widest uppercase mb-5 ${
+                  isDark ? "text-slate-400" : "text-slate-400"
                 }`}
               >
                 {category.title}
               </h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {category.skills.map((skill, idx) => {
                   const Icon = skill.icon;
                   return (
                     <div
                       key={idx}
-                      className={`group p-6 rounded-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl border ${
+                      className={`group flex items-center gap-3 p-4 rounded-xl border transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md ${
                         isDark
-                          ? "bg-slate-800/50 border-slate-700 hover:bg-slate-800"
-                          : "bg-gradient-to-br from-slate-50 to-blue-50 border-slate-100 hover:shadow-xl"
+                          ? "bg-slate-800 border-slate-700 hover:border-slate-600"
+                          : "bg-slate-50 border-slate-200 hover:border-slate-300 hover:bg-white"
                       }`}
                     >
-                      <div className="flex flex-col items-center text-center space-y-3">
-                        <div
-                          className={`p-4 bg-gradient-to-br ${skill.color} rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300`}
-                        >
-                          <Icon className="text-3xl text-white" />
-                        </div>
-                        <h4
-                          className={`font-semibold ${
-                            isDark ? "text-white" : "text-slate-900"
+                      <div
+                        className={`p-2 rounded-lg ${
+                          isDark ? "bg-slate-700" : "bg-white border border-slate-200"
+                        }`}
+                      >
+                        <Icon
+                          className={`text-xl ${
+                            isDark ? "text-slate-300" : "text-slate-600"
                           }`}
-                        >
-                          {skill.name}
-                        </h4>
+                        />
                       </div>
+                      <span
+                        className={`text-sm font-medium ${
+                          isDark ? "text-slate-200" : "text-slate-700"
+                        }`}
+                      >
+                        {skill.name}
+                      </span>
                     </div>
                   );
                 })}
@@ -169,21 +140,13 @@ const Skills = ({ isDark }) => {
         </div>
 
         <div className="mt-16 text-center animate-fade-in-up">
-          <div
-            className={`inline-block px-8 py-4 rounded-2xl border ${
-              isDark
-                ? "bg-slate-800/50 border-slate-700"
-                : "bg-gradient-to-r from-blue-50 to-sky-50 border-blue-100"
+          <p
+            className={`text-sm ${
+              isDark ? "text-slate-500" : "text-slate-400"
             }`}
           >
-            <p
-              className={`font-medium ${
-                isDark ? "text-slate-200" : "text-slate-700"
-              }`}
-            >
-              Always learning and exploring new technologies 🚀
-            </p>
-          </div>
+            Always learning and exploring new technologies
+          </p>
         </div>
       </div>
     </section>

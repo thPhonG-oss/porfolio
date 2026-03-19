@@ -4,27 +4,23 @@ const Projects = ({ isDark }) => {
   const projects = [
     {
       id: 1,
-      image: null,
       title: "E-Commerce API",
       description:
         "RESTful API for e-commerce platform with microservices architecture, payment integration, and real-time inventory management.",
       tech: ["Spring Boot", "PostgreSQL", "Redis", "Docker"],
       github: "https://github.com/thPhonG-oss",
       demo: null,
-      emoji: "🛒",
-      gradient: "from-blue-500 to-cyan-500",
+      label: "Backend · Microservices",
     },
     {
       id: 2,
-      image: null,
       title: "Task Management",
       description:
         "Collaborative task management API with real-time notifications, user authentication, and role-based access control.",
       tech: ["Java", "Spring Security", "MongoDB", "WebSocket"],
       github: "https://github.com/thPhonG-oss",
       demo: null,
-      emoji: "✅",
-      gradient: "from-emerald-500 to-teal-500",
+      label: "Backend · Real-time",
     },
   ];
 
@@ -32,13 +28,18 @@ const Projects = ({ isDark }) => {
     <section
       id="projects"
       className={`min-h-screen py-24 transition-colors duration-300 ${
-        isDark
-          ? "bg-gradient-to-br from-slate-800 to-slate-900"
-          : "bg-gradient-to-br from-slate-50 to-blue-50"
+        isDark ? "bg-slate-800" : "bg-slate-50"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16 animate-fade-in-up">
+          <span
+            className={`font-semibold text-xs tracking-widest uppercase ${
+              isDark ? "text-blue-400" : "text-blue-600"
+            }`}
+          >
+            My Work
+          </span>
           <h2
             className={`text-4xl md:text-5xl font-bold mb-4 mt-2 ${
               isDark ? "text-white" : "text-slate-900"
@@ -46,69 +47,75 @@ const Projects = ({ isDark }) => {
           >
             Featured Projects
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-sky-500 mx-auto rounded-full"></div>
+          <div
+            className={`w-12 h-px mx-auto ${
+              isDark ? "bg-slate-600" : "bg-slate-300"
+            }`}
+          ></div>
           <p
-            className={`mt-6 text-lg max-w-2xl mx-auto ${
-              isDark ? "text-slate-300" : "text-slate-600"
+            className={`mt-6 text-base max-w-2xl mx-auto ${
+              isDark ? "text-slate-400" : "text-slate-500"
             }`}
           >
             Some of my recent work and personal projects
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, idx) => (
             <div
               key={project.id}
-              className={`group rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border animate-scale-in ${
+              className={`group rounded-2xl overflow-hidden border transition-all duration-200 hover:-translate-y-1 hover:shadow-lg animate-scale-in ${
                 isDark
-                  ? "bg-slate-800/80 border-slate-700"
-                  : "bg-white border-slate-100"
+                  ? "bg-slate-900 border-slate-700 hover:border-slate-600"
+                  : "bg-white border-slate-200 hover:border-slate-300"
               }`}
               style={{ animationDelay: `${idx * 0.1}s` }}
             >
-              <div className="h-48 overflow-hidden relative">
-                {project.image ? (
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                ) : (
-                  <div
-                    className={`w-full h-full flex items-center justify-center bg-gradient-to-br ${project.gradient}`}
-                  >
-                    <span className="text-6xl">{project.emoji}</span>
-                  </div>
-                )}
-              </div>
-
-              <div className="p-6">
-                <h3
-                  className={`text-2xl font-bold mb-3 transition-colors ${
+              {/* Card header — plain monochrome */}
+              <div
+                className={`h-40 flex flex-col items-start justify-end p-5 border-b ${
+                  isDark
+                    ? "bg-slate-800 border-slate-700"
+                    : "bg-slate-100 border-slate-200"
+                }`}
+              >
+                <span
+                  className={`text-xs font-medium mb-2 px-2 py-0.5 rounded-full border ${
                     isDark
-                      ? "text-white group-hover:text-blue-400"
-                      : "text-slate-900 group-hover:text-blue-600"
+                      ? "border-slate-600 text-slate-400"
+                      : "border-slate-300 text-slate-500"
+                  }`}
+                >
+                  {project.label}
+                </span>
+                <h3
+                  className={`text-xl font-bold ${
+                    isDark ? "text-white" : "text-slate-900"
                   }`}
                 >
                   {project.title}
                 </h3>
+              </div>
+
+              {/* Card body */}
+              <div className="p-5">
                 <p
-                  className={`mb-4 leading-relaxed text-sm ${
-                    isDark ? "text-slate-300" : "text-slate-600"
+                  className={`mb-4 text-sm leading-relaxed ${
+                    isDark ? "text-slate-400" : "text-slate-500"
                   }`}
                 >
                   {project.description}
                 </p>
 
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tech.map((tech, idx) => (
+                <div className="flex flex-wrap gap-1.5 mb-5">
+                  {project.tech.map((tech, i) => (
                     <span
-                      key={idx}
-                      className={`px-3 py-1 text-xs rounded-full font-medium ${
+                      key={i}
+                      className={`px-2.5 py-0.5 text-xs rounded-full font-medium ${
                         isDark
-                          ? "bg-slate-700 text-slate-300"
-                          : "bg-slate-100 text-slate-700"
+                          ? "bg-slate-800 text-slate-300 border border-slate-700"
+                          : "bg-slate-100 text-slate-600"
                       }`}
                     >
                       {tech}
@@ -117,42 +124,36 @@ const Projects = ({ isDark }) => {
                 </div>
 
                 <div
-                  className={`flex space-x-4 pt-4 border-t ${
-                    isDark ? "border-slate-700" : "border-slate-100"
+                  className={`flex items-center gap-4 pt-4 border-t ${
+                    isDark ? "border-slate-800" : "border-slate-100"
                   }`}
                 >
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`flex items-center space-x-2 transition-colors group/link ${
+                    className={`flex items-center gap-1.5 text-sm transition-colors ${
                       isDark
                         ? "text-slate-400 hover:text-blue-400"
-                        : "text-slate-600 hover:text-blue-600"
+                        : "text-slate-500 hover:text-blue-600"
                     }`}
                   >
-                    <FaGithub
-                      size={18}
-                      className="group-hover/link:scale-110 transition-transform"
-                    />
-                    <span className="text-sm font-medium">Code</span>
+                    <FaGithub size={15} />
+                    <span>Code</span>
                   </a>
                   {project.demo && (
                     <a
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`flex items-center space-x-2 transition-colors group/link ${
+                      className={`flex items-center gap-1.5 text-sm transition-colors ${
                         isDark
                           ? "text-slate-400 hover:text-blue-400"
-                          : "text-slate-600 hover:text-blue-600"
+                          : "text-slate-500 hover:text-blue-600"
                       }`}
                     >
-                      <FaExternalLinkAlt
-                        size={16}
-                        className="group-hover/link:scale-110 transition-transform"
-                      />
-                      <span className="text-sm font-medium">Demo</span>
+                      <FaExternalLinkAlt size={13} />
+                      <span>Demo</span>
                     </a>
                   )}
                 </div>

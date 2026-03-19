@@ -1,29 +1,28 @@
 const About = ({ isDark }) => {
   const highlights = [
-    {
-      icon: "🎓",
-      title: "Education",
-      value: "Information System",
-      color: "blue",
-    },
-    // { icon: '💻', title: 'Projects', value: '5+ Completed', color: 'sky' },
-    { icon: "🚀", title: "Learning", value: "Fast & Eager", color: "indigo" },
-    { icon: "🤝", title: "Team Work", value: "Collaborative", color: "cyan" },
+    { title: "Education", value: "Information System" },
+    { title: "Learning", value: "Fast & Eager" },
+    { title: "Team Work", value: "Collaborative" },
+  ];
+
+  const stats = [
+    { label: "Focus", value: "Backend" },
+    { label: "Language", value: "Java" },
+    { label: "Framework", value: "Spring Boot" },
+    { label: "Seeking", value: "Internship" },
   ];
 
   return (
     <section
       id="about"
       className={`min-h-screen py-24 transition-colors duration-300 ${
-        isDark
-          ? "bg-gradient-to-br from-slate-800 to-slate-900"
-          : "bg-gradient-to-br from-slate-50 to-blue-50"
+        isDark ? "bg-slate-800" : "bg-slate-50"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16 animate-fade-in-up">
           <span
-            className={`font-semibold text-sm tracking-wider uppercase ${
+            className={`font-semibold text-xs tracking-widest uppercase ${
               isDark ? "text-blue-400" : "text-blue-600"
             }`}
           >
@@ -36,55 +35,110 @@ const About = ({ isDark }) => {
           >
             About Me
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-sky-500 mx-auto rounded-full"></div>
+          <div
+            className={`w-12 h-px mx-auto ${
+              isDark ? "bg-slate-600" : "bg-slate-300"
+            }`}
+          ></div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-16 items-center">
+          {/* Left — profile stats card */}
           <div className="flex justify-center animate-scale-in">
-            <div className="relative">
+            <div
+              className={`w-full max-w-xs rounded-2xl border p-8 space-y-5 ${
+                isDark
+                  ? "bg-slate-900 border-slate-700"
+                  : "bg-white border-slate-200"
+              }`}
+            >
+              <div className="space-y-1">
+                <p
+                  className={`text-xs font-semibold tracking-widest uppercase ${
+                    isDark ? "text-slate-500" : "text-slate-400"
+                  }`}
+                >
+                  Profile
+                </p>
+                <h3
+                  className={`text-xl font-bold ${
+                    isDark ? "text-white" : "text-slate-900"
+                  }`}
+                >
+                  Phong Nguyen Thanh
+                </h3>
+              </div>
+
               <div
-                className={`absolute inset-0 rounded-3xl transform rotate-6 ${
-                  isDark
-                    ? "bg-gradient-to-br from-slate-700 to-slate-800"
-                    : "bg-gradient-to-br from-blue-100 to-sky-100"
+                className={`w-full h-px ${
+                  isDark ? "bg-slate-700" : "bg-slate-100"
                 }`}
               ></div>
+
+              <div className="space-y-4">
+                {stats.map((s, idx) => (
+                  <div key={idx} className="flex justify-between items-center">
+                    <span
+                      className={`text-sm ${
+                        isDark ? "text-slate-400" : "text-slate-500"
+                      }`}
+                    >
+                      {s.label}
+                    </span>
+                    <span
+                      className={`text-sm font-semibold ${
+                        isDark ? "text-slate-200" : "text-slate-800"
+                      }`}
+                    >
+                      {s.value}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
               <div
-                className={`relative p-8 rounded-3xl shadow-xl border ${
+                className={`w-full h-px ${
+                  isDark ? "bg-slate-700" : "bg-slate-100"
+                }`}
+              ></div>
+
+              <span
+                className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${
                   isDark
-                    ? "bg-slate-800 border-slate-700"
-                    : "bg-white border-slate-100"
+                    ? "bg-slate-700 text-blue-400"
+                    : "bg-blue-50 text-blue-600"
                 }`}
               >
-                <div className="text-9xl text-center">👨‍💻</div>
-              </div>
+                Open to internship
+              </span>
             </div>
           </div>
 
+          {/* Right — bio text */}
           <div className="space-y-6 animate-slide-in-right">
             <h3
               className={`text-3xl md:text-4xl font-bold ${
                 isDark ? "text-white" : "text-slate-900"
               }`}
             >
-              Backend Development
-              <span className="text-blue-500"> Intern</span>
+              Backend Development{" "}
+              <span className="text-blue-600">Intern</span>
             </h3>
 
             <p
-              className={`text-lg leading-relaxed ${
-                isDark ? "text-slate-300" : "text-slate-600"
+              className={`text-base leading-relaxed ${
+                isDark ? "text-slate-400" : "text-slate-500"
               }`}
             >
-              Hi! I'm a information system student passionate about backend
+              Hi! I'm an information system student passionate about backend
               development with Java and Spring Boot. I'm actively seeking an
               internship opportunity to apply my knowledge and grow as a
               developer.
             </p>
 
             <p
-              className={`text-lg leading-relaxed ${
-                isDark ? "text-slate-300" : "text-slate-600"
+              className={`text-base leading-relaxed ${
+                isDark ? "text-slate-400" : "text-slate-500"
               }`}
             >
               Through personal projects, I've gained hands-on experience with
@@ -93,28 +147,26 @@ const About = ({ isDark }) => {
               real-world projects.
             </p>
 
-            <div className="grid grid-cols-2 gap-4 pt-4">
+            {/* Highlight cards */}
+            <div className="grid grid-cols-3 gap-3 pt-2">
               {highlights.map((item, idx) => (
                 <div
                   key={idx}
-                  className={`p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border group ${
+                  className={`p-4 rounded-xl border text-center hover:-translate-y-1 transition-transform duration-200 ${
                     isDark
-                      ? "bg-slate-800/80 border-slate-700 hover:bg-slate-800"
-                      : "bg-white border-slate-100"
+                      ? "bg-slate-800 border-slate-700"
+                      : "bg-white border-slate-200"
                   }`}
                 >
-                  <div className="text-4xl mb-3 transform group-hover:scale-110 transition-transform">
-                    {item.icon}
-                  </div>
-                  <h4
-                    className={`text-sm font-medium mb-1 ${
-                      isDark ? "text-slate-400" : "text-slate-500"
+                  <p
+                    className={`text-xs font-medium mb-1 ${
+                      isDark ? "text-slate-500" : "text-slate-400"
                     }`}
                   >
                     {item.title}
-                  </h4>
+                  </p>
                   <p
-                    className={`font-bold ${
+                    className={`text-sm font-bold ${
                       isDark ? "text-white" : "text-slate-900"
                     }`}
                   >
@@ -124,15 +176,16 @@ const About = ({ isDark }) => {
               ))}
             </div>
 
-            <div className="pt-6 flex flex-wrap gap-4">
+            {/* Action buttons */}
+            <div className="pt-4 flex flex-wrap gap-3">
               <a
                 href="/CV_NguyenThanhPhong_WebAppDev_Intern.pdf"
                 download="CV_NguyenThanhPhong_WebAppDev_Intern.pdf"
-                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-sky-500 text-white rounded-xl font-medium hover:shadow-xl hover:scale-105 transition-all duration-300"
+                className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors duration-200"
               >
                 <span>Download CV</span>
                 <svg
-                  className="w-5 h-5 ml-2"
+                  className="w-4 h-4 ml-2"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -152,15 +205,15 @@ const About = ({ isDark }) => {
                     .getElementById("contact")
                     .scrollIntoView({ behavior: "smooth" })
                 }
-                className={`inline-flex items-center px-8 py-4 rounded-xl font-medium border-2 transition-all duration-300 hover:scale-105 ${
+                className={`inline-flex items-center px-6 py-3 rounded-lg text-sm font-medium border transition-colors duration-200 ${
                   isDark
-                    ? "border-blue-500 text-blue-400 hover:bg-blue-500/10"
-                    : "border-blue-600 text-blue-600 hover:bg-blue-50"
+                    ? "border-slate-700 text-slate-300 hover:border-slate-500"
+                    : "border-slate-200 text-slate-600 hover:border-slate-400"
                 }`}
               >
                 <span>Contact Me</span>
                 <svg
-                  className="w-5 h-5 ml-2"
+                  className="w-4 h-4 ml-2"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
